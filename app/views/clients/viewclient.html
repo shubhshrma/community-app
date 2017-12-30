@@ -39,6 +39,8 @@
 		</div>
 		<div class="modal-body ">
 			<button class="btn btn-warning" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+			<button class="btn btn-danger" ng-click="deleteSig()" has-permission='DELETE_CLIENTIMAGE'><i class="fa fa-trash-o" aria-hidden="true"></i>{{'label.button.delete' | translate}}</button>
+			<button class="btn btn-primary" ng-click="uploadSig()" has-permission='CREATE_CLIENTIMAGE'><i class="fa fa-upload" aria-hidden="true"></i>{{'label.button.upload' | translate}}</button>
 		</div>
 	</script>
 	<script type="text/ng-template" id="clientWithoutSignature.html">
@@ -46,7 +48,8 @@
 			<h3 class="bolder">{{'label.noClientSignature' | translate}}</h3>
 		</div>
 		<div class="modal-body ">
-			<button class="btn btn-warning" ng-click="cancel()">{{'label.button.ok' | translate}}</button>
+			<button class="btn btn-warning" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+			<button class="btn btn-primary" ng-click="uploadSig()" has-permission='CREATE_CLIENTIMAGE'><i class="fa fa-upload" aria-hidden="true"></i>{{'label.button.upload' | translate}}</button>
 		</div>
 	</script>
 
@@ -163,7 +166,7 @@
 		<div class="content">
 			<div class="toolbar">
 				<h3 class="client-title">
-					<i class="fa fa-circle {{client.status.code | StatusLookup}}"></i>
+					<i class="fa fa-circle {{client.status.code | StatusLookup}}" uib-tooltip="{{client.status.value}}" uib-tooltip-placement="top"></i>
 					<small ng-if="client.subStatus.description">
 						[{{client.subStatus.description}}]
 					</small>
